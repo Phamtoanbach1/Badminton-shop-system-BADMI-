@@ -1,0 +1,18 @@
+export const ROUTES = {
+  HOME: '/',
+  LOGIN: '/dang-nhap',
+  REGISTER: '/dang-ky',
+  PRODUCTS: '/san-pham',
+  PRODUCT_DETAIL: '/san-pham/:slug',
+  CART: '/gio-hang',
+  WISHLIST: '/san-pham-yeu-thich',
+  ORDERS: '/don-hang',
+  ORDER_DETAIL: '/don-hang/:id',
+  PROFILE: '/tai-khoan',
+  STORES: '/cua-hang',
+  NEWS: '/tin-tuc',
+  TRAINING: '/dao-tao',
+  DEALS: '/giam-gia',
+  CAREERS: '/tuyen-dung',
+  CONTACT: '/lien-he',
+} as const;
