@@ -8,41 +8,41 @@ export const WEBSITE = 'FBSHOP.VN';
 
 export const API_ENDPOINTS = {
   // Auth
-  LOGIN: '/auth/login',
-  REGISTER: '/auth/register',
-  LOGOUT: '/auth/logout',
-  ME: '/auth/me',
+  LOGIN: '/api/auth/login',
+  REGISTER: '/api/auth/register',
+  LOGOUT: '/api/auth/logout',
+  ME: '/api/auth/me',
 
   // Products
-  PRODUCTS: '/products',
-  PRODUCT_DETAIL: (id: number | string) => `/products/${id}`,
-  PRODUCT_BY_SLUG: (slug: string) => `/products/slug/${slug}`,
+  PRODUCTS: '/api/products',
+  PRODUCT_DETAIL: (id: number | string) => `/api/products/${id}`,
+  PRODUCT_BY_SLUG: (slug: string) => `/api/products/slug/${slug}`,
 
   // Categories
-  CATEGORIES: '/categories',
-  CATEGORY_DETAIL: (id: number | string) => `/categories/${id}`,
-  SUBCATEGORIES: '/subcategories',
+  CATEGORIES: '/api/categories',
+  CATEGORY_DETAIL: (id: number | string) => `/api/categories/${id}`,
+  SUBCATEGORIES: '/api/subcategories',
 
   // Brands
-  BRANDS: '/brands',
-  BRAND_DETAIL: (id: number | string) => `/brands/${id}`,
+  BRANDS: '/api/brands',
+  BRAND_DETAIL: (id: number | string) => `/api/brands/${id}`,
 
   // Cart
-  CART: '/cart',
-  CART_ADD: '/cart/add',
-  CART_UPDATE: (id: number | string) => `/cart/${id}`,
-  CART_REMOVE: (id: number | string) => `/cart/${id}`,
-  CART_CLEAR: '/cart/clear',
+  CART: '/api/cart',
+  CART_ADD: '/api/cart/add',
+  CART_UPDATE: (id: number | string) => `/api/cart/${id}`,
+  CART_REMOVE: (id: number | string) => `/api/cart/${id}`,
+  CART_CLEAR: '/api/cart/clear',
 
   // Wishlist
-  WISHLIST: '/wishlist',
-  WISHLIST_ADD: '/wishlist/add',
-  WISHLIST_REMOVE: (id: number | string) => `/wishlist/${id}`,
+  WISHLIST: '/api/wishlist',
+  WISHLIST_ADD: '/api/wishlist/add',
+  WISHLIST_REMOVE: (id: number | string) => `/api/wishlist/${id}`,
 
   // Orders
-  ORDERS: '/orders',
-  ORDER_DETAIL: (id: number | string) => `/orders/${id}`,
-  ORDER_PLACE: '/orders/place',
+  ORDERS: '/api/orders',
+  ORDER_DETAIL: (id: number | string) => `/api/orders/${id}`,
+  ORDER_PLACE: '/api/orders/place',
 } as const;
 
 export const STORAGE_KEYS = {

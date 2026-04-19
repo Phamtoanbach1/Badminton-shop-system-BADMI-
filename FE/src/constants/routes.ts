@@ -15,4 +15,10 @@ export const ROUTES = {
   DEALS: '/giam-gia',
   CAREERS: '/tuyen-dung',
   CONTACT: '/lien-he',
+  // Admin Routes
+  ADMIN: '/admin',
+  ADMIN_DASHBOARD: '/admin/dashboard',
+  ADMIN_PRODUCTS: '/admin/products',
+  ADMIN_CATEGORIES: '/admin/categories',
+  ADMIN_BRANDS: '/admin/brands',
 } as const;

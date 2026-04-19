@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Heart, ChevronRight, Minus, Plus, Star } from 'lucide-react';
+import { ShoppingCart, Heart, ChevronRight, Minus, Plus } from 'lucide-react';
 import { mockProducts, mockCategories } from '../../mocks/data';
 import { formatCurrency, calcDiscount } from '../../utils';
 import { useAddToCart } from '../../hooks/useCart';

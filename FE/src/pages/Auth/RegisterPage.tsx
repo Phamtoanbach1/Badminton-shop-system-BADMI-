@@ -4,6 +4,33 @@ import { Eye, EyeOff, UserPlus } from 'lucide-react';
 import { useAuth } from '../../store/AuthContext';
 import { ROUTES } from '../../constants/routes';
 
+interface FieldProps {
+  id: string;
+  label: string;
+  field: 'name' | 'email' | 'phone';
+  type?: string;
+  placeholder: string;
+  value: string;
+  error?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Field = ({ id, label, field, type = 'text', placeholder, value, error, onChange }: FieldProps) => (
+  <div className={`input-wrap${error ? ' input-error' : ''}`}>
+    <label className="input-label">{label}</label>
+    <input
+      id={id}
+      type={type}
+      className="input-field"
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      autoComplete={field === 'email' ? 'email' : field === 'name' ? 'name' : 'off'}
+    />
+    {error && <span className="input-message">{error}</span>}
+  </div>
+);
+
 const RegisterPage = () => {
   const { register } = useAuth();
   const navigate      = useNavigate();
@@ -43,31 +70,15 @@ const RegisterPage = () => {
     }
   };
 
-  const Field = ({ id, label, field, type = 'text', placeholder }: { id: string; label: string; field: string; type?: string; placeholder: string }) => (
-    <div className={`input-wrap${errors[field] ? ' input-error' : ''}`}>
-      <label className="input-label">{label}</label>
-      <input
-        id={id}
-        type={type}
-        className="input-field"
-        placeholder={placeholder}
-        value={(form as any)[field]}
-        onChange={update(field)}
-        autoComplete={field === 'email' ? 'email' : field === 'name' ? 'name' : 'off'}
-      />
-      {errors[field] && <span className="input-message">{errors[field]}</span>}
-    </div>
-  );
-
   return (
     <div>
       <h2 className="auth-title">Đăng ký tài khoản</h2>
       <p className="auth-subtitle">Tham gia Badmishop để nhận ưu đãi độc quyền!</p>
 
       <form className="auth-form" onSubmit={handleSubmit}>
-        <Field id="reg-name"  label="Họ và tên"      field="name"  placeholder="Nguyễn Văn An" />
-        <Field id="reg-email" label="Email"           field="email" type="email" placeholder="email@example.com" />
-        <Field id="reg-phone" label="Số điện thoại"  field="phone" type="tel"   placeholder="0847xxxxxx" />
+        <Field id="reg-name"  label="Họ và tên"      field="name"  placeholder="Nguyễn Văn An" value={form.name} error={errors.name} onChange={update('name')} />
+        <Field id="reg-email" label="Email"           field="email" type="email" placeholder="email@example.com" value={form.email} error={errors.email} onChange={update('email')} />
+        <Field id="reg-phone" label="Số điện thoại"  field="phone" type="tel"   placeholder="0847xxxxxx" value={form.phone} error={errors.phone} onChange={update('phone')} />
 
         {/* Password */}
         <div className={`input-wrap${errors.password ? ' input-error' : ''}`}>

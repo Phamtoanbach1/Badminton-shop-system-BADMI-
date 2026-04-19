@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import { ROUTES } from '../../../constants/routes';
-import { APP_NAME, HOTLINE, WEBSITE } from '../../../constants';
+import { APP_NAME, HOTLINE } from '../../../constants';
 
 const Footer = () => {
   return (

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: badmishop-be
+
+server:
+  port: ${PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+jwt:
+  secret: ${JWT_SECRET:TXlTdXBlclNlY3JldEtleUZvckpXVEJ1dE11c3RCZUxvbmdFbm91Z2hGb3JIQVNINTEy}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}

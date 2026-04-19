@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { SlidersHorizontal, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import ProductCard from '../../components/shared/ProductCard/ProductCard';
 import { mockProducts, mockCategories, mockBrands } from '../../mocks/data';
 import { useAddToCart } from '../../hooks/useCart';
@@ -31,7 +31,6 @@ const ProductsPage = () => {
   );
   const [selectedBrands, setSelectedBrands] = useState<number[]>([]);
   const [sort, setSort] = useState('newest');
-  const [showFilter, setShowFilter] = useState(false);
 
   // ─── Filter logic (local mock) ───────────────────
   let filtered = mockProducts.filter(p => p.is_active);

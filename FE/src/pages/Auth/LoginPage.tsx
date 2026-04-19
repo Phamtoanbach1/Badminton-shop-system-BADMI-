@@ -24,15 +24,22 @@ const LoginPage = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log('Form submitted!');
     e.preventDefault();
+    console.log('Validation starting...');
     const errs = validate();
+    console.log('Validation errors:', errs);
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
     setLoading(true);
+    console.log('Starting login process...');
     try {
+      console.log('Calling login...');
       await login({ email, password });
+      console.log('Login completed, navigating to:', ROUTES.HOME);
       navigate(ROUTES.HOME);
-    } catch {
+    } catch (error) {
+      console.error('Login failed:', error);
       // Error handled by axios interceptor + react-hot-toast
     } finally {
       setLoading(false);
@@ -43,6 +50,11 @@ const LoginPage = () => {
     <div>
       <h2 className="auth-title">Đăng nhập</h2>
       <p className="auth-subtitle">Chào mừng trở lại! Đăng nhập để tiếp tục.</p>
+
+      {/* Test button */}
+      <button onClick={() => console.log('Test button clicked!')} style={{ marginBottom: 10, padding: 5, background: 'red', color: 'white' }}>
+        Test Console
+      </button>
 
       <form className="auth-form" onSubmit={handleSubmit}>
         {/* Email */}

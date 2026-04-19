@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 // Axios client centralized instance
 // =============================================
 const axiosClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080',
   timeout: 15000,
   headers: {
     'Content-Type': 'application/json',
@@ -17,6 +17,7 @@ const axiosClient = axios.create({
 // Automatically attaches JWT token to every request
 axiosClient.interceptors.request.use(
   (config) => {
+    console.log('API Request:', config.method?.toUpperCase(), config.url);
     const token = tokenService.getToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -29,8 +30,12 @@ axiosClient.interceptors.request.use(
 // ─── Response Interceptor ────────────────────
 // Global error handling: 401 -> logout, 5xx -> toast
 axiosClient.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log('API Response:', response.status, response.config.method?.toUpperCase(), response.config.url);
+    return response;
+  },
   (error: AxiosError<{ message?: string }>) => {
+    console.error('API Error:', error.response?.status, error.config?.method?.toUpperCase(), error.config?.url, error.response?.data);
     const status = error.response?.status;
     const message = error.response?.data?.message;
 

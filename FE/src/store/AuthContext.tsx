@@ -43,11 +43,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = useCallback(async (data: LoginRequest) => {
+    console.log('Login attempt:', data);
     const response = await authApi.login(data);
+    console.log('Login response:', response);
     const { token, user } = response.data;
+    console.log('Token:', token, 'User:', user);
     tokenService.setToken(token);
     localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
     setState({ user, isAuthenticated: true, isLoading: false });
+    console.log('Login successful, navigating to home');
     toast.success(`Chào mừng trở lại, ${user.name}!`);
   }, []);
 

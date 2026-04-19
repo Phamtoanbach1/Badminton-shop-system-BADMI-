@@ -1,17 +1,15 @@
-import { Outlet, NavLink, Link, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Heart, User, Search, Phone, ChevronDown, Menu } from 'lucide-react';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { ShoppingCart, Heart, User, Search, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { ROUTES } from '../../../constants/routes';
 import { useAuth } from '../../../store/AuthContext';
 import { useCart } from '../../../hooks/useCart';
-import { APP_NAME, HOTLINE } from '../../../constants';
 
 const Header = () => {
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const { data: cartItems } = useCart();
   const cartCount = cartItems?.length ?? 0;
   const [searchQuery, setSearchQuery] = useState('');
-  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSearch = (e: React.FormEvent) => {
