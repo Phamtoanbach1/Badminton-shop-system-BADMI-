@@ -54,9 +54,7 @@ Open:
 http://localhost:5173
 ```
 
-## Useful Accounts
 
-- `admin@badmishop.com` / `password123`
 
 ## Git Branching
 
